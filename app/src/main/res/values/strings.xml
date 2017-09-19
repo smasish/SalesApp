@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">SalesApp</string>
+
+    <string name="reg">Registration</string>
+    <string name="mobno">Mobile no is not correct</string>
+    <string name="b_userid">User ID cannot be left blank</string>
+    <string name="b_pass">Password cannot be left blank</string>
+    <string name="b_retype_pass">Re-Type Password cannot be left blank</string>
+    <string name="pass_mismatch">Password and Re-Type password does not match\nPlease try again</string>
+    <string name="reg_failed">Registration failed due to invalid user information.\nPlease contact help desk</string>
+
+</resources>

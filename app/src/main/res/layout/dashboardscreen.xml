@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:orientation="vertical" >
+    
+       <LinearLayout 
+	android:orientation="horizontal" android:layout_width="fill_parent"
+	android:background="@drawable/screentop"
+	android:gravity="center_vertical"
+	 android:layout_height="wrap_content">
+	 
+        <ImageView android:layout_width="wrap_content"
+	 android:layout_height="wrap_content"
+	 android:background="@drawable/arrow"
+	 android:onClick="back"
+	 />
+	 
+             <TextView
+            android:id="@+id/productName"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Dashboard"
+            android:layout_marginLeft="20dip"
+             android:textColor="@color/white"
+             android:textSize="20sp"
+             android:textStyle="bold"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+    </LinearLayout>
+    
+    <TableRow 
+        android:id="@+id/widget38" 
+        android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+	    android:orientation="horizontal"
+		android:paddingTop="5dip">
+			<ImageView
+			    android:layout_marginLeft="65dp"
+            	android:layout_marginTop="35dp"
+        		android:id="@+id/order_id"
+        		android:layout_width="wrap_content"
+        		android:layout_height="wrap_content"
+        		android:background="@drawable/order" />
+			
+			<ImageView
+        		android:layout_marginLeft="80dp"
+        		android:layout_marginRight="65dp"
+            	android:layout_marginTop="35dp"
+        		android:id="@+id/draft_id"
+        		android:layout_width="wrap_content"
+        		android:layout_height="wrap_content"
+        		android:background="@drawable/draft" />
+			
+	</TableRow>
+	
+	<TableRow 
+        android:id="@+id/widget38" 
+        android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+	    android:orientation="horizontal"
+		android:paddingTop="5dip">
+			<TextView
+			    android:layout_marginLeft="55dp"
+        		android:layout_width="wrap_content"
+        		android:textColor="@color/black"
+        		android:layout_height="wrap_content"
+        		android:text="New Order" />
+			<TextView
+			    android:layout_marginLeft="60dp"
+        		android:layout_width="wrap_content"
+        		android:layout_height="wrap_content"
+        		android:textColor="@color/black"
+        		android:text="Draft Orders" />
+	</TableRow>
+	<TableRow 
+        android:id="@+id/widget38" 
+        android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+	    android:orientation="horizontal"
+		android:paddingTop="5dip">
+			<ImageView
+			    android:layout_marginLeft="65dp"
+            	android:layout_marginTop="20dp"
+        		android:id="@+id/sent_id"
+        		android:layout_width="wrap_content"
+        		android:layout_height="wrap_content"
+        		android:background="@drawable/sent" />
+			
+			<ImageView
+        		android:layout_marginLeft="80dp"
+        		android:layout_marginRight="65dp"
+            	android:layout_marginTop="20dp"
+        		android:id="@+id/customer_id"
+        		android:layout_width="wrap_content"
+        		android:layout_height="wrap_content"
+        		android:background="@drawable/customer" />
+			
+	</TableRow>
+	<TableRow 
+        android:id="@+id/widget38" 
+        android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+	    android:orientation="horizontal"
+		android:paddingTop="5dip">
+			<TextView
+			    android:layout_marginLeft="55dp"
+        		android:layout_width="wrap_content"
+        		android:layout_height="wrap_content"
+        		android:textColor="@color/black"
+        		android:text="Sent Orders" />
+			<TextView
+			    android:layout_marginLeft="60dp"
+        		android:layout_width="wrap_content"
+        		android:layout_height="wrap_content"
+        		android:textColor="@color/black"
+        		android:text="Customers" />
+	</TableRow>
+	<TableRow 
+        android:id="@+id/widget38" 
+        android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+	    android:orientation="horizontal"
+		android:paddingTop="5dip">
+			<ImageView
+			    android:layout_marginLeft="65dp"
+            	android:layout_marginTop="20dp"
+        		android:id="@+id/product_id"
+        		android:layout_width="wrap_content"
+        		android:layout_height="wrap_content"
+        		android:background="@drawable/pill_icon" />
+			
+			<ImageView
+        		android:layout_marginLeft="80dp"
+        		android:layout_marginRight="65dp"
+            	android:layout_marginTop="20dp"
+        		android:id="@+id/sync_id"
+        		android:layout_width="wrap_content"
+        		android:layout_height="wrap_content"
+        		android:background="@drawable/sync" />
+			
+	</TableRow>
+	
+	<TableRow 
+        android:id="@+id/widget48"
+        android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+	    android:orientation="horizontal"
+		android:paddingTop="5dip">
+			<TextView
+			    android:layout_marginLeft="60dp"
+        		android:layout_width="wrap_content"
+        		android:layout_height="wrap_content"
+        		android:textColor="@color/black"
+        		android:text="Products" />
+			<TextView
+			    android:layout_marginLeft="70dp"
+        		android:layout_width="wrap_content"
+        		android:textColor="@color/black"
+        		android:layout_height="wrap_content"
+        		android:text="Sync Apps" />
+	</TableRow>
+	<TableRow 
+        android:id="@+id/widget68"
+        android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+	    android:orientation="horizontal"
+		android:paddingTop="5dip">
+			<ImageView
+			    android:layout_marginLeft="65dp"
+            	android:layout_marginTop="20dp"
+        		android:id="@+id/about_id"
+        		android:layout_width="wrap_content"
+        		android:layout_height="wrap_content"
+        		android:background="@drawable/about" />
+			
+			<ImageView
+        		android:layout_marginLeft="80dp"
+        		android:layout_marginRight="65dp"
+            	android:layout_marginTop="20dp"
+        		android:id="@+id/logout_id"
+        		android:layout_width="wrap_content"
+        		android:layout_height="wrap_content"
+        		android:background="@drawable/logout" />
+			
+	</TableRow>
+	<TableRow 
+        android:id="@+id/widget88"
+        android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+	    android:orientation="horizontal"
+		android:paddingTop="5dip">
+			<TextView
+			    android:layout_marginLeft="65dp"
+        		android:layout_width="wrap_content"
+        		android:textColor="@color/black"
+        		android:layout_height="wrap_content"
+        		android:text="About" />
+			<TextView
+			    android:layout_marginLeft="100dp"
+        		android:layout_width="wrap_content"
+        		android:textColor="@color/black"
+        		android:layout_height="wrap_content"
+        		android:text="Exit" />
+	</TableRow>
+		
+		
+</LinearLayout>
