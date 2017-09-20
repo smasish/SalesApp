@@ -104,11 +104,7 @@ public class Customers extends Activity implements OnItemClickListener {
 
         dbHelper.close();
     }
-//    else{
-//    	AlertMessage.showMessage(con, "No data found.", "Please Syncing customers with server and try again.");
-//    	  dbHelper.close();
-//    }
- //   }
+
 
     public void back(View v) {
         finish();
