@@ -15,6 +15,8 @@ import android.view.Window;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 
+import customer.Customers;
+
 
 public class DashBoardActivity extends Activity implements OnClickListener {
 	/** Called when the activity is first created. */
@@ -53,12 +55,12 @@ public class DashBoardActivity extends Activity implements OnClickListener {
 		logout.setOnClickListener(this);
 		
 		
-		TelephonyManager telemamanger = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
-		String getSimSerialNumber = telemamanger.getSimSerialNumber();
+//		TelephonyManager telemamanger = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
+//		String getSimSerialNumber = telemamanger.getSimSerialNumber();
 		
-		String s = telemamanger.getDeviceId();
+//		String s = telemamanger.getDeviceId();
 		
-		Log.d("......"+s, ">>>>"+getSimSerialNumber);
+//		Log.d("......"+s, ">>>>"+getSimSerialNumber);
 
 	}
 
@@ -116,21 +118,10 @@ public class DashBoardActivity extends Activity implements OnClickListener {
 
 			cus = SharedPreferencesHelper.getCust(con);
 			prod = SharedPreferencesHelper.getProd(con);
-			 
 
-//			if (cus.equalsIgnoreCase("cust") && prod.equalsIgnoreCase("prod")) {
-//				Intent intent = new Intent(this, Master.class);
-//
-//				intent.putExtra("neworder", "new");
-//				Master.selected = false;
-//				startActivity(intent);
-//				overridePendingTransition(R.anim.fadein, R.anim.fadeout);
-//			} else {
-//				AlertMessage
-//						.showMessage(con, "No data found.",
-//								"Please Syncing customers and products with server and try again.");
-//
-//			}
+			Intent intent = new Intent(this, RegisterActivity.class);
+			startActivity(intent);
+
 
 			break;
 
@@ -170,19 +161,9 @@ public class DashBoardActivity extends Activity implements OnClickListener {
 			break;
 		case R.id.customer_id:
 			cus = SharedPreferencesHelper.getCust(con);
-		
-//
-//			if (cus.equalsIgnoreCase("cust")) {
-//				Intent customerIntent = new Intent(this, Customers.class);
-//				customerIntent.putExtra("SOURCE", "GENERAL");
-//				startActivity(customerIntent);
-//				overridePendingTransition(R.anim.fadein, R.anim.fadeout);
-//			} else {
-//				AlertMessage
-//						.showMessage(con, getString(R.string.customers),
-//								getString(R.string.custmsg));
-//
-//			}
+			Intent customer = new Intent(this, Customers.class);
+			startActivity(customer);
+
 			break;
 		case R.id.product_id:
 			cus = SharedPreferencesHelper.getCust(con);

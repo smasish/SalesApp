@@ -30,7 +30,7 @@
     </LinearLayout>
     
     <TableRow 
-        android:id="@+id/widget38" 
+        android:id="@+id/widget28"
         android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
 	    android:orientation="horizontal"
@@ -55,7 +55,7 @@
 	</TableRow>
 	
 	<TableRow 
-        android:id="@+id/widget38" 
+        android:id="@+id/widget8"
         android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
 	    android:orientation="horizontal"
@@ -74,7 +74,7 @@
         		android:text="Draft Orders" />
 	</TableRow>
 	<TableRow 
-        android:id="@+id/widget38" 
+        android:id="@+id/widget08"
         android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
 	    android:orientation="horizontal"
@@ -117,7 +117,7 @@
         		android:text="Customers" />
 	</TableRow>
 	<TableRow 
-        android:id="@+id/widget38" 
+        android:id="@+id/widget48"
         android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
 	    android:orientation="horizontal"
@@ -142,7 +142,7 @@
 	</TableRow>
 	
 	<TableRow 
-        android:id="@+id/widget48"
+        android:id="@+id/widget448"
         android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
 	    android:orientation="horizontal"

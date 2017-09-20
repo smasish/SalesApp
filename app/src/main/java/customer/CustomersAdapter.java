@@ -17,8 +17,9 @@ import android.widget.BaseAdapter;
 import android.widget.SectionIndexer;
 import android.widget.TextView;
 
-import com.square.android.salesorder.R;
-import com.square.android.salesorder.database.DatabaseHelper;
+import database.DatabaseHelper;
+import sindabad.zerogvt.salesapp.R;
+
 
 public class CustomersAdapter extends BaseAdapter implements SectionIndexer {
 

@@ -27,7 +27,7 @@ public class SplashScreenActivity extends RoboActivity {
             @Override
             public void run() {
                 /* Create an Intent that will start the Menu-Activity. */
-                Intent mainIntent = new Intent(SplashScreenActivity.this,RegisterActivity.class);
+                Intent mainIntent = new Intent(SplashScreenActivity.this,DashBoardActivity.class);
                 if (bundle != null) {
                     mainIntent.putExtras(bundle);
                 }

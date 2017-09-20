@@ -37,14 +37,14 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
 
-public class CommentsDataSource  {
+public class ProductsDataSource {
 	// Database fields
 	private SQLiteDatabase database;
 	private MySQLiteHelper dbHelper;
 	private String[] allColumns = { MySQLiteHelper.COLUMN_ID,
 			MySQLiteHelper.COLUMN_COMMENT };
 
-	public CommentsDataSource(Context context) {
+	public ProductsDataSource(Context context) {
 		dbHelper = new MySQLiteHelper(context);
 	}
 
@@ -56,7 +56,7 @@ public class CommentsDataSource  {
 		dbHelper.close();
 	}
 
-	public Comment createComment(String comment) {
+	public Product createComment(String comment) {
 		ContentValues values = new ContentValues();
 		values.put(MySQLiteHelper.COLUMN_COMMENT, comment);
 		long insertId = database.insert(MySQLiteHelper.TABLE_COMMENTS, null,
@@ -69,32 +69,32 @@ public class CommentsDataSource  {
 		return cursorToComment(cursor);
 	}
 
-	public void deleteComment(Comment comment) {
-		long id = comment.getId();
-		System.out.println("Comment deleted with id: " + id);
+	public void deleteComment(Product product) {
+		long id = product.getId();
+		System.out.println("Product deleted with id: " + id);
 		database.delete(MySQLiteHelper.TABLE_COMMENTS, MySQLiteHelper.COLUMN_ID
 				+ " = " + id, null);
 	}
 
-	public List<Comment> getAllComments() {
-		List<Comment> comments = new ArrayList<Comment>();
+	public List<Product> getAllComments() {
+		List<Product> products = new ArrayList<Product>();
 		Cursor cursor = database.query(MySQLiteHelper.TABLE_COMMENTS,
 				allColumns, null, null, null, null, null);
 		cursor.moveToFirst();
 		while (!cursor.isAfterLast()) {
-			Comment comment = cursorToComment(cursor);
-			comments.add(comment);
+			Product product = cursorToComment(cursor);
+			products.add(product);
 			cursor.moveToNext();
 		}
 		// Make sure to close the cursor
 		cursor.close();
-		return comments;
+		return products;
 	}
 
-	private Comment cursorToComment(Cursor cursor) {
-		Comment comment = new Comment();
-		comment.setId(cursor.getLong(0));
-		comment.setComment(cursor.getString(1));
-		return comment;
+	private Product cursorToComment(Cursor cursor) {
+		Product product = new Product();
+		product.setId(cursor.getLong(0));
+		product.setComment(cursor.getString(1));
+		return product;
 	}
 }

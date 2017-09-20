@@ -30,7 +30,7 @@ package sindabad.zerogvt.salesapp;
 import java.util.Observable;
 
 
-public class Comment  {
+public class Product {
 	private long id;
 	private String comment;
 
