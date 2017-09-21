@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingTop="2.5dp"
+    android:paddingBottom="2.5dp"
+    android:paddingLeft="5dp"
+    android:paddingRight="5dp">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:paddingTop="2.5dp"
+        android:paddingBottom="2.5dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp">
+
+        <ImageView
+            android:id="@+id/list_image"
+            android:layout_width="75dip"
+            android:layout_height="75dip"
+            android:layout_alignParentLeft="true"
+            android:src="@drawable/ic_basket" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="75dip"
+            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@+id/list_image"
+            android:orientation="vertical"
+            >
+            <TextView
+                android:id="@+id/from_name"
+                android:layout_width="match_parent"
+                android:layout_height="25dip"
+                android:layout_marginLeft="2dip"
+                android:layout_alignParentTop="true"
+                android:layout_toRightOf="@+id/thumbnail"
+                android:text="Pineapple"
+                android:textColor="#040404"
+                android:textSize="15dip"
+                android:typeface="sans" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dip"
+                android:orientation="horizontal"
+                >
+                <LinearLayout
+                    android:layout_width="75dip"
+                    android:layout_height="50dip"
+                    android:orientation="vertical"
+                    >
+
+                    <TextView
+                        android:id="@+id/plist_weight_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal|center_vertical"
+                        android:paddingRight="25dip"
+                        android:text="100 gm"
+                        android:textColor="#343434"
+                        android:textSize="12dip" />
+
+
+                    <TextView
+                        android:id="@+id/plist_price_text"
+                        android:layout_width="75dip"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal|center_vertical"
+                        android:layout_marginLeft="5dip"
+                        android:layout_marginTop="5dip"
+                        android:layout_weight="0.23"
+                        android:paddingRight="5dip"
+                        android:text=" TK.205500"
+                        android:textColor="#1d1d1d"
+                        android:textSize="12dip"
+                        android:textStyle="bold" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dip"
+                    android:gravity="right"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/cart_minus_img"
+                        android:layout_width="44dip"
+                        android:layout_height="44dip"
+                        android:onClick="minusFancyMethod"
+                        android:src="@drawable/ic_minus" />
+
+                    <EditText
+                        android:id="@+id/cart_product_quantity_tv"
+                        android:layout_width="60dip"
+                        android:layout_height="50dip"
+                        android:layout_gravity="center_vertical|center_horizontal"
+                        android:inputType="number"
+                        android:onClick="minusFancyMethod"
+                        android:paddingLeft="5dip"
+                        android:paddingRight="5dip"
+                        android:text="1050000"
+                        android:textSize="12dip"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:id="@+id/cart_plus_img"
+                        android:layout_width="44dip"
+                        android:layout_height="44dip"
+                        android:onClick="plusFancyMethod"
+                        android:src="@drawable/ic_plus" />
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+</LinearLayout>
