@@ -1,4 +1,4 @@
-package zerogravity.bd.com.productlist.adapter;
+package sindabad.zerogvt.salesapp.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -14,9 +14,9 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import zerogravity.bd.com.productlist.ProductListActivity;
-import zerogravity.bd.com.productlist.R;
-import zerogravity.bd.com.productlist.model.Product;
+import sindabad.zerogvt.salesapp.ProductListActivity;
+import sindabad.zerogvt.salesapp.R;
+import sindabad.zerogvt.salesapp.model.Product;
 
 
 public class ProductAdapter extends BaseAdapter {

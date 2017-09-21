@@ -1,4 +1,4 @@
-package zerogravity.bd.com.productlist.model;
+package sindabad.zerogvt.salesapp.model;
 
 import android.content.Context;
 
@@ -15,7 +15,7 @@ import java.util.ArrayList;
 
 public class Product {
 
-    public static final String TAG = zerogravity.bd.com.productlist.model.Product.class.getSimpleName();
+    public static final String TAG = sindabad.zerogvt.salesapp.model.Product.class.getSimpleName();
 
     public String title;
     public String price;
@@ -68,6 +68,33 @@ public class Product {
         }
 
         return json;
+    }
+
+
+    //====================================
+    private long id;
+    private String comment;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
+    // Will be used by the ArrayAdapter in the ListView
+    @Override
+    public String toString() {
+        return comment;
     }
 
 }

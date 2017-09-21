@@ -36,6 +36,8 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
+import sindabad.zerogvt.salesapp.model.Product;
+
 
 public class ProductsDataSource {
 	// Database fields

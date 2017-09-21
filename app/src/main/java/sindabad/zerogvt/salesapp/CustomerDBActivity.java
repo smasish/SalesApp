@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 
+import sindabad.zerogvt.salesapp.model.Product;
+
 public class CustomerDBActivity extends ListActivity {
 	private ProductsDataSource datasource;
 
@@ -16,6 +18,7 @@ public class CustomerDBActivity extends ListActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
 
+		// dhgdh
 		datasource = new ProductsDataSource(this);
 		datasource.open();
 

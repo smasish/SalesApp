@@ -1,8 +1,8 @@
-package zerogravity.bd.com.productlist;
+package sindabad.zerogvt.salesapp;
 
 import android.content.Context;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -10,8 +10,8 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
-import zerogravity.bd.com.productlist.adapter.ProductAdapter;
-import zerogravity.bd.com.productlist.model.Product;
+import sindabad.zerogvt.salesapp.model.Product;
+import sindabad.zerogvt.salesapp.adapter.ProductAdapter;
 
 public class ProductListActivity extends AppCompatActivity {
 
