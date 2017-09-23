@@ -22,6 +22,7 @@ public class Product {
     public String imageUrl;
     public String instructionUrl;
     public int quantity;
+    public byte[] product_img;
 
     public static ArrayList<Product> getRecipesFromFile(String filename, Context context){
         final ArrayList<Product> recipeList = new ArrayList<>();

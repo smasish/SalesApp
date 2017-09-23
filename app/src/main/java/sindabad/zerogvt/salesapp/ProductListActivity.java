@@ -10,6 +10,8 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
+import database.DatabaseHelper;
+import sindabad.zerogvt.salesapp.model.Contact;
 import sindabad.zerogvt.salesapp.model.Product;
 import sindabad.zerogvt.salesapp.adapter.ProductAdapter;
 
@@ -25,6 +27,7 @@ public class ProductListActivity extends AppCompatActivity {
     private ListView mListView;
     int p_index;
     EditText quantity;
+    private DatabaseHelper db;
     public static ArrayList<Product> recipeList;
 
     @Override
@@ -33,10 +36,12 @@ public class ProductListActivity extends AppCompatActivity {
         setContentView(R.layout.productlist);
 
         final Context context = this;
-
+        db=new DatabaseHelper(this);
         // Get data to display
-        recipeList = Product.getRecipesFromFile("product.json", this);
+//        recipeList = Product.getRecipesFromFile("product.json", this);
 
+//        final ArrayList<Product> contacts = new ArrayList<>(db.getAllProduct());
+        recipeList = new ArrayList<>(db.getAllProduct());
         // Create adapter
         ProductAdapter adapter = new ProductAdapter(this, recipeList);
 

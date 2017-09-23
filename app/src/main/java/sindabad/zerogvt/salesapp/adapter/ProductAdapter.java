@@ -1,6 +1,8 @@
 package sindabad.zerogvt.salesapp.adapter;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -99,10 +101,11 @@ public class ProductAdapter extends BaseAdapter {
         titleTextView.setText(recipe.title);
         price_text.setText("TK" + recipe.price);
         quantity.setText("" + recipe.quantity);
+        productImageView.setImageBitmap(convertToBitmap(recipe.product_img));
 
         // Use Picasso to load the image. Temporarily have a placeholder in case it's slow to load
-        Picasso.with(mContext).load(recipe.imageUrl).placeholder(R.mipmap
-                .ic_launcher).into(productImageView);
+//        Picasso.with(mContext).load(recipe.imageUrl).placeholder(R.mipmap
+//                .ic_launcher).into(productImageView);
 
 //        // Style text views
 //        Typeface titleTypeFace = Typeface.createFromAsset(mContext.getAssets(),
@@ -139,7 +142,11 @@ public class ProductAdapter extends BaseAdapter {
 
         return convertView;
     }
+    private Bitmap convertToBitmap(byte[] b){
 
+        return BitmapFactory.decodeByteArray(b, 0, b.length);
+
+    }
     private static class ViewHolder {
         public TextView titleTextView;
         public TextView price_text;

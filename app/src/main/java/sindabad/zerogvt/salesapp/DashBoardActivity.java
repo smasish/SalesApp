@@ -136,6 +136,10 @@ public class DashBoardActivity extends Activity implements OnClickListener {
 			cus = SharedPreferencesHelper.getCust(con);
 			prod = SharedPreferencesHelper.getProd(con);
 
+
+			Intent product = new Intent(this, ProductListActivity.class);
+			startActivity(product);
+
 //			if (prod.equalsIgnoreCase("prod")) {
 //				Intent product = new Intent(this, Products.class);
 //				startActivity(product);
@@ -152,8 +156,8 @@ public class DashBoardActivity extends Activity implements OnClickListener {
 //			startActivity(sync);
 			break;
 		case R.id.about_id:
-//			Intent aboutIntent = new Intent(this, About.class);
-//			startActivity(aboutIntent);
+			Intent aboutIntent = new Intent(this, AddProductActivity.class);
+			startActivity(aboutIntent);
 //			overridePendingTransition(R.anim.fadein, R.anim.fadeout);
 			break;
 		case R.id.logout_id:
