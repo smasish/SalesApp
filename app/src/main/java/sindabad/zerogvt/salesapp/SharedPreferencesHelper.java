@@ -67,8 +67,7 @@ public final class SharedPreferencesHelper {
     private static final String DRAFT = "dr";
     private static final String SENT = "SE";
 
-    // Getters for Application configuration attributes and preferences defined
-    // in Android Manifest
+
 
     public static long getPrefTabFeedId(final Context ctx, final long defaultTabFeedId) {
         return ctx.getSharedPreferences(SharedPreferencesHelper.PREFS_FILE_NAME,

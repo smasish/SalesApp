@@ -8,8 +8,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.telephony.TelephonyManager;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.View.OnClickListener;
@@ -53,14 +51,7 @@ public class DashBoardActivity extends Activity implements OnClickListener {
 		sync_data.setOnClickListener(this);
 		about.setOnClickListener(this);
 		logout.setOnClickListener(this);
-		
-		
-//		TelephonyManager telemamanger = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
-//		String getSimSerialNumber = telemamanger.getSimSerialNumber();
-		
-//		String s = telemamanger.getDeviceId();
-		
-//		Log.d("......"+s, ">>>>"+getSimSerialNumber);
+
 
 	}
 
@@ -111,10 +102,7 @@ public class DashBoardActivity extends Activity implements OnClickListener {
 
 		switch (v.getId()) {
 		case R.id.order_id:
-			// dbHelper.open();
-			// long rowId = dbHelper.createNewOrder();
-			// Constants.setOrderId(dbHelper.getOrderId(rowId));
-			// dbHelper.close();
+
 
 			cus = SharedPreferencesHelper.getCust(con);
 			prod = SharedPreferencesHelper.getProd(con);
@@ -130,34 +118,13 @@ public class DashBoardActivity extends Activity implements OnClickListener {
 			draf = SharedPreferencesHelper.getDraft(con);
 			//prod = SharedPreferencesHelper.getProd(con);
 			
-//			 dbHelper.open();
-//
-//		      cursor = dbHelper.getOrdersByStatus("D");
-//
-//			if (draf.equalsIgnoreCase("draft") && cursor.moveToFirst()) {
-//				Intent draft = new Intent(this, Drafts.class);
-//				startActivity(draft);
-//				overridePendingTransition(R.anim.fadein, R.anim.fadeout);
-//			} else {
-//				AlertMessage
-//						.showMessage(con, getString(R.string.draft),
-//								getString(R.string.draftmsg));
-//
-//			}
+
 			break;
 		case R.id.sent_id:
 			send = SharedPreferencesHelper.getSent(con);
 			//prod = SharedPreferencesHelper.getProd(con);
 
-//			if (send.equalsIgnoreCase("sent")) {
-//				Intent sent = new Intent(this, SentsNew.class);
-//				startActivity(sent);
-//				overridePendingTransition(R.anim.fadein, R.anim.fadeout);
-//			} else {
-//				AlertMessage
-//						.showMessage(con, getString(R.string.sent),getString(R.string.sentmsg));
-//
-//			}
+
 			break;
 		case R.id.customer_id:
 			cus = SharedPreferencesHelper.getCust(con);

@@ -131,7 +131,7 @@
         		android:background="@drawable/pill_icon" />
 			
 			<ImageView
-        		android:layout_marginLeft="80dp"
+        		android:layout_marginLeft="55dp"
         		android:layout_marginRight="65dp"
             	android:layout_marginTop="20dp"
         		android:id="@+id/sync_id"

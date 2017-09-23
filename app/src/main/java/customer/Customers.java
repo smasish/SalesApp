@@ -58,22 +58,6 @@ public class Customers extends Activity implements OnItemClickListener {
 
         dbHelper = new DatabaseHelper(this);
         dbHelper.open();
-//        cust = SharedPreferencesHelper.getCust(con);
-//        if(cust.equalsIgnoreCase("cust")){
-//        Cursor cursor = dbHelper.getAllCustomers();
-//        cursor.moveToFirst();
-//
-//        AllTempCustomers.removeAllData();
-
-
-        // adapter = new CustomerAdapter(this, cursor,arraylist);
-
-    //    adapter = new CustomersAdapter(this, cursor, arraylist);
-
-        // customers = (ListView)findViewById(R.id.customers);
-        // customers.setAdapter(adapter);
-        // customers.setOnItemClickListener(this);
-
 
 
         inputsearch = (EditText)findViewById(R.id.inputSearch);

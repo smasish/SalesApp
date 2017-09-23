@@ -111,20 +111,7 @@ public class CustomersAdapter extends BaseAdapter implements SectionIndexer {
                 // Intent intent = new Intent(mContext, SingleItemView.class);
                 // // Pass all data rank
                 // intent.putExtra("productname",
-                // (worldpopulationlist.get(position).getProduct_name()));
-                // // Pass all data country
-                // intent.putExtra("productcode",
-                // (worldpopulationlist.get(position).getProduct_code()));
-                // // Pass all data population
-                // intent.putExtra("packsize",
-                // (worldpopulationlist.get(position).getPacket_size()));
-                // // Pass all data flag
-                // intent.putExtra("unitp",
-                // (worldpopulationlist.get(position).getUnit()));
-                // intent.putExtra("unitvat",
-                // (worldpopulationlist.get(position).getUnitvat()));
-                // // Start SingleItemView Class
-                // mContext.startActivity(intent);
+
             }
         });
 

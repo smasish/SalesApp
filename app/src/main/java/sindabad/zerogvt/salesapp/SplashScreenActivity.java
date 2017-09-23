@@ -7,9 +7,7 @@ import android.os.Handler;
 import roboguice.activity.RoboActivity;
 import roboguice.inject.ContentView;
 
-/**
- * Created by Ashraful on 4/21/2016.
- */
+
 @ContentView(R.layout.activity_splash_screen)
 public class SplashScreenActivity extends RoboActivity {
     private int SPLASH_DISPLAY_LENGTH=3000;
