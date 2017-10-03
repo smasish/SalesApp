@@ -58,7 +58,7 @@ public class Customers extends Activity implements OnItemClickListener {
     private String source;
 
     TempCustomers tempCustomers = null;
-
+    ArrayList<HashMap<String, String>> contactList;
 //    private IndexableListView mListView;
 
     EditText inputsearch;
@@ -91,6 +91,7 @@ public class Customers extends Activity implements OnItemClickListener {
         dbHelper = new DatabaseHelper(this);
         dbHelper.open();
 
+        contactList = new ArrayList<>();
 
         inputsearch = (EditText)findViewById(R.id.inputSearch);
         inputsearch.setFocusableInTouchMode(true);
@@ -193,7 +194,7 @@ public class Customers extends Activity implements OnItemClickListener {
 
             String URL = url;
         Log.d(".response--.", ".."+url);
-            StringRequest stringRequest = new StringRequest(Request.Method.POST, URL,
+            StringRequest stringRequest = new StringRequest(Request.Method.GET, URL,
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
@@ -201,6 +202,31 @@ public class Customers extends Activity implements OnItemClickListener {
                             Log.d(".response--.", ">>>"+response.toString());
 
                             Log.d("====x=", "..xx..>>");
+                            try {
+                                // Parsing json object response
+                                // response will be a json object
+//                                String name = response.getString("name");
+//
+//                                String email = response.getString("email");
+//                                JSONObject phone = response.getJSONObject("phone");
+//                                String home = phone.getString("home");
+//                                String mobile = phone.getString("mobile");
+//
+//                                jsonResponse = "";
+//                                jsonResponse += "Name: " + name + "\n\n";
+//                                jsonResponse += "Email: " + email + "\n\n";
+//                                jsonResponse += "Home: " + home + "\n\n";
+//                                jsonResponse += "Mobile: " + mobile + "\n\n";
+
+                              //  txtResponse.setText(jsonResponse);
+
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                                Toast.makeText(getApplicationContext(),
+                                        "Error: " + e.getMessage(),
+                                        Toast.LENGTH_LONG).show();
+                            }
+
 
                         }
                     },
@@ -216,8 +242,8 @@ public class Customers extends Activity implements OnItemClickListener {
                     Map<String,String> data = new HashMap<String,String>();
 
 
-                    data.put("page", "49");
-                    data.put("page_size", "50");
+                    data.put("page", "1");
+                    data.put("page_size", "2");
 
                     Log.d(".data--.", ".."+data);
                     return data;

@@ -6,8 +6,8 @@ package constant;
 public class Url {
     public static String BASE_URL = "https://sindabad.com/restapi/index.php/";
     public static String CATEGORY_URL = "https://sindabad.com/restapi/index.php/search";
-    public static String CUSTOMERS_URL = "https://staging.sindabad.com/restapi/index.php/api/customers";
-    public static String PAYMENT_STATUS_URL = "https://sindabad.com/restapi/index.php/search";
+    public static String CUSTOMERS_URL = "https://sindabad.com/rest/index.php/api/customers";
+    public static String PAYMENT_STATUS_URL = "https://api.androidhive.info/volley/person_object.json";
 
 
     public static final String HOME_DELIVERY = "https://kiksha.com/delivery.html";
