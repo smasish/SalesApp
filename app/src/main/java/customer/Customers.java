@@ -29,6 +29,7 @@ import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.RetryPolicy;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonArrayRequest;
@@ -128,11 +129,53 @@ public class Customers extends Activity implements OnItemClickListener {
 
         Log.d("==onresume theke===","----");
 
-        new DataList().execute("");
+//        new DataList().execute("");
 
+        HashMap data = new HashMap();
+        data.put("page", "2");
+        data.put("page_size", "5");
+        String url = "https://staging.sindabad.com/restapi/index.php/api/customers";
+        postData(url, data);
+    }
+    public void postData(String url, HashMap data) {
+        RequestQueue requstQueue = Volley.newRequestQueue(Customers.this);
+
+        JsonObjectRequest jsonobj = new JsonObjectRequest(Request.Method.POST, url, new JSONObject(data),
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Log.d("test_disable_sess", response.toString());
+                        Toast.makeText(Customers.this, "This is my " + response.toString(),
+                                Toast.LENGTH_LONG).show();
+
+//                        if(mResultCallback != null){
+//                            mResultCallback.notifySuccess(response);
+//                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.d("test_disable_err", error.toString());
+                        Toast.makeText(Customers.this, "This is my " + error.toString(),
+                                Toast.LENGTH_LONG).show();
+
+//                        if(mResultCallback != null){
+//                            mResultCallback.notifyError(error);
+//                        }
+                    }
+                }
+        ) {
+            //here I want to post data to sever
+        };
+        int socketTimeout = 30000; // 30 seconds. You can change it
+        RetryPolicy policy = new DefaultRetryPolicy(socketTimeout,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
+        jsonobj.setRetryPolicy(policy);
+        requstQueue.add(jsonobj);
 
     }
-
     @Override
     protected void onResume() {
         super.onResume();

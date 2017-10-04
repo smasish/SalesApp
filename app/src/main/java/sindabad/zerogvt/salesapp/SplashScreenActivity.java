@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
+import constant.Utility;
 import roboguice.activity.RoboActivity;
 import roboguice.inject.ContentView;
 
@@ -17,6 +18,7 @@ public class SplashScreenActivity extends RoboActivity {
         super.onCreate(savedInstanceState);
 
         setActvityLifetime(getIntent().getExtras());
+        Utility.Disable_Certificate_Validation_Java_SSL_Connections();
     }
 
     private void setActvityLifetime(final Bundle bundle)
