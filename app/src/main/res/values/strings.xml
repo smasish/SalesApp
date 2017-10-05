@@ -2,6 +2,7 @@
     <string name="app_name">SalesApp</string>
 
     <string name="reg">Registration</string>
+    <string name="product">Product List</string>
     <string name="mobno">Mobile no is not correct</string>
     <string name="b_userid">User ID cannot be left blank</string>
     <string name="b_pass">Password cannot be left blank</string>

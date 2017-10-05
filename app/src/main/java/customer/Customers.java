@@ -21,14 +21,19 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.NetworkResponse;
+import com.android.volley.NoConnectionError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonArrayRequest;
@@ -44,6 +49,7 @@ import org.json.JSONObject;
 import constant.Url;
 import database.DatabaseHelper;
 import sindabad.zerogvt.salesapp.AlertMessage;
+import sindabad.zerogvt.salesapp.ProductListActivity;
 import sindabad.zerogvt.salesapp.R;
 import sindabad.zerogvt.salesapp.SharedPreferencesHelper;
 
@@ -128,7 +134,7 @@ public class Customers extends Activity implements OnItemClickListener {
 
         Log.d("==onresume theke===","----");
 
-        new DataList().execute("");
+        new SendOperation().execute("");
 
 
     }
@@ -141,8 +147,7 @@ public class Customers extends Activity implements OnItemClickListener {
 
     }
 
-    private class DataList extends AsyncTask<String, String, String> {
-
+    private class SendOperation extends AsyncTask<String, String, String> {
 
         @Override
         protected String doInBackground(String... params) {
@@ -150,33 +155,154 @@ public class Customers extends Activity implements OnItemClickListener {
             try {
 
 
+                Log.d("response---", "********" );
+                StringRequest stringRequest = new StringRequest(Request.Method.POST, Url.CUSTOMERS_URL,
+                        new Response.Listener<String>() {
+                            @Override
+                            public void onResponse(String response) {
+                                Log.d("response---", "********" + response.toString());
 
 
-                data_parsing(Url.CUSTOMERS_URL);
-                Log.d("==url======","----"+Url.CUSTOMERS_URL);
+                                Log.d("OutPut---", "----");
+                                JSONArray mArray;
+                                try {
+                                    // Log.d("OutPut---", "----");
+                                    JSONObject reader = new JSONObject(response.toString());
 
+                                    Log.d("OutPut---", "-arry---"+reader.getJSONArray("customer_list"));
+                                    JSONArray ja = reader.getJSONArray("customer_list");
+                                    for (int i = 0; i < ja.length(); i++) {
+
+
+                                        Log.d("OutPut---", "----"+ja.get(i));
+                                        Log.d("OutPut---", "---ll-"+ja.length());
+
+                                        // JSONArray jj = ja.getJSONArray(i);
+                                        HashMap<String, String> contact = new HashMap<>();
+
+                                        for (int j = 0; j < ja.length(); j++) {
+
+                                            JSONObject c = ja.getJSONObject(j);
+                                            String name = c.getString("email");
+                                            contact.put("email", name);
+                                            String firstname = c.getString("firstname");
+                                            contact.put("firstname", firstname);
+
+                                            String lastname = c.getString("lastname");
+                                            contact.put("lastname", lastname);
+                                            String id = c.getString("id");
+                                            contact.put("id", id);
+//                                            String type = c.getString("type_id");
+//                                            contact.put("type", type);
+
+                                            Log.d("OutPut---", "---nam-"+name);
+                                            contactList.add(contact);
+
+
+                                        }
+
+                                        Log.d("OutPut---", "----"+contactList.size());
+
+
+                                    }
+//                                    Log.d("OutPut---", "----"+reader.getString("name"));
+
+
+
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                                Log.d("response--flag-", ""+contactList.size() );
+
+                                ListAdapter adapter = new SimpleAdapter(Customers.this, contactList,
+                                        R.layout.triprow, new String[]{ "email","firstname","lastname","id",},
+                                        new int[]{R.id.offertext, R.id.km_id,R.id.name_id,R.id.sku_id});
+                                cust_list.setAdapter(adapter);
+                                Toast.makeText(Customers.this, "Success "+ name, Toast.LENGTH_SHORT).show();
+
+                                // if(flag) {
+//                                Intent i = new Intent(RegisterActivity.this, MainActivity.class);
+//                                i.putExtra("staffid",name);
+//                                startActivity(i);
+
+                                pd.dismiss();
+
+
+                            }
+                        },
+                        new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                pd.dismiss();
+                                Toast.makeText(Customers.this,error.toString(),Toast.LENGTH_LONG).show();
+
+                                NetworkResponse networkResponse = error.networkResponse;
+                                if (networkResponse != null) {
+                                    Log.e("Volley", "Error. HTTP Status Code:"+networkResponse.statusCode);
+                                }
+                                Toast.makeText(Customers.this, "Invalid response", Toast.LENGTH_SHORT).show();
+                                if (error instanceof TimeoutError) {
+                                    Log.e("Volley", "TimeoutError");
+                                }else if(error instanceof NoConnectionError){
+                                    Log.e("Volley", "NoConnectionError");
+                                }
+                            }
+                        }){
+                    @Override
+                    protected Map<String,String> getParams(){
+                        Map<String,String> params = new HashMap<String, String>();
+                      //  params.put("category_id","5");
+                        params.put("page","1");
+                        params.put("page_size","2");
+
+                        try {
+                            JSONObject data = new JSONObject();
+                            // data.put("loginName", user);
+                            // data.put("loginPass", pass);
+                           // data.put("category_id","18");
+                            data.put("page","1");
+                            data.put("page_size","2");
+                            Log.e("request",data.toString());
+                            params.put("data login-------", data.toString());
+                        }catch (Exception e){
+                            e.printStackTrace();
+                        }
+                        //params.put("data", "{'username':'"+username+"','password':'"+password+"'}");
+                        return params;
+                    }
+
+                };
+
+                stringRequest.setRetryPolicy(new DefaultRetryPolicy(30000,DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+
+                RequestQueue requestQueue = Volley.newRequestQueue(Customers.this);
+                requestQueue.add(stringRequest);
+                Log.d("====22====","----"+flag);
 
             } catch (Exception e) {
                 e.printStackTrace();
 
             }
-            return null;
+            return "";
         }
 
 
         @Override
         protected void onPostExecute(String result) {
 
-            cust_list.setAdapter(data_adapter);
-            pd.dismiss();
+//            ListAdapter adapter = new SimpleAdapter(Customers.this, contactList,
+//                    R.layout.triprow, new String[]{ "name","type","short_des_id","sku","price"},
+//                    new int[]{R.id.offertext, R.id.km_id,R.id.name_id,R.id.sku_id,R.id.price_id});
+//            cust_list.setAdapter(adapter);
+//            cust_list.invalidate();
+            Log.d("**********. ", "out----" + contactList.size());
         }
-
 
         @Override
         protected void onPreExecute() {
 
+            super.onPreExecute();
         }
-
 
         @Override
         protected void onProgressUpdate(String... text) {
@@ -184,7 +310,6 @@ public class Customers extends Activity implements OnItemClickListener {
 
         }
     }
-
 
     private void data_parsing(String url) {
 

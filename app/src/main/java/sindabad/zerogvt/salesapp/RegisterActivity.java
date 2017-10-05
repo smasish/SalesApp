@@ -21,6 +21,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.NetworkResponse;
 import com.android.volley.NoConnectionError;
 import com.android.volley.Request;
@@ -141,7 +142,8 @@ public class RegisterActivity extends Activity implements OnClickListener {
                     String message = "Registration processing \nPlease wait...";
                     pd = ProgressDialog.show(con, title, message, true, true);
                     
-                    new SendOperation().execute("");
+                    new LoginOperation().execute("");
+
 
                     if (flag) {
                         finish();
@@ -154,97 +156,57 @@ public class RegisterActivity extends Activity implements OnClickListener {
 
     }
 
-    private class SendOperation extends AsyncTask<String, String, String> {
+    public void testRequest(){
+        StringRequest sr = new StringRequest(Request.Method.POST,"https://staging.sindabad.com/restapi/index.php/api/customer_add", new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Log.d("test_disable_sess","Test Reqest"+ response.toString());
+                Toast.makeText(RegisterActivity.this, "This is my " + response.toString(),
+                        Toast.LENGTH_LONG).show();
+//            mPostCommentResponse.requestCompleted();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d("test_disable_sess","Error Conn"+ error.toString());
+                Toast.makeText(RegisterActivity.this, "This is my " + error.toString(),
+                        Toast.LENGTH_LONG).show();
+//            mPostCommentResponse.requestEndedWithError(error);
+            }
+        }){
+            @Override
+            protected Map<String,String> getParams(){
+                Map<String,String> data = new HashMap<String, String>();
+                data.put("customer_email", "asish@gmail.com");
+                data.put("customer_firstname", "01911612622");
+                data.put("customer_lastname", "Dada");
+                data.put("customer_password", "xx123456");
+//            params.put("user",userAccount.getUsername());
+//            params.put("pass",userAccount.getPassword());
+//            params.put("comment", Uri.encode(comment));
+//            params.put("comment_post_ID",String.valueOf(postId));
+//            params.put("blogId",String.valueOf(blogId));
+
+                return data;
+            }
+
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String,String> params = new HashMap<String, String>();
+                params.put("Content-Type","application/x-www-form-urlencoded");
+                return params;
+            }
+        };
+        RequestQueue requstQueue = Volley.newRequestQueue(RegisterActivity.this);
+        requstQueue.add(sr);
+    }
+
+    private class LoginOperation extends AsyncTask<String, String, String> {
 
         @Override
         protected String doInBackground(String... params) {
 
-            try {
-
-
-                Log.d("response---", "********" );
-                StringRequest stringRequest = new StringRequest(Request.Method.POST, Url.REG_URL,
-                        new Response.Listener<String>() {
-                            @Override
-                            public void onResponse(String response) {
-                                Log.d("response---", "********" + response.toString());
-
-
-                                JSONArray mArray;
-                                try {
-                                    mArray = new JSONArray(response.toString());
-                                    for (int i = 0; i < mArray.length(); i++) {
-                                        JSONObject mJsonObject = mArray.getJSONObject(i);
-                                        Log.d("OutPut---", mJsonObject.getString("name"));
-                                        Log.d("OutPut---", mJsonObject.getString("email"));
-                                        name = mJsonObject.getString("StaffID");
-
-                                        flag = true;
-
-                                    }
-                                } catch (JSONException e) {
-                                    e.printStackTrace();
-                                }
-                                Log.d("response--flag-", ""+flag );
-                                Toast.makeText(RegisterActivity.this, "Success "+ name, Toast.LENGTH_SHORT).show();
-
-                                // if(flag) {
-//                                Intent i = new Intent(RegisterActivity.this, MainActivity.class);
-//                                i.putExtra("staffid",name);
-//                                startActivity(i);
-
-                                pd.dismiss();
-
-
-                            }
-                        },
-                        new Response.ErrorListener() {
-                            @Override
-                            public void onErrorResponse(VolleyError error) {
-                                pd.dismiss();
-                                Toast.makeText(RegisterActivity.this,error.toString(),Toast.LENGTH_LONG).show();
-
-                                NetworkResponse networkResponse = error.networkResponse;
-                                if (networkResponse != null) {
-                                    Log.e("Volley", "Error. HTTP Status Code:"+networkResponse.statusCode);
-                                }
-                                Toast.makeText(RegisterActivity.this, "Invalid response", Toast.LENGTH_SHORT).show();
-                                if (error instanceof TimeoutError) {
-                                    Log.e("Volley", "TimeoutError");
-                                }else if(error instanceof NoConnectionError){
-                                    Log.e("Volley", "NoConnectionError");
-                                }
-                            }
-                        }){
-                    @Override
-                    protected Map<String,String> getParams(){
-                        Map<String,String> params = new HashMap<String, String>();
-                        params.put(KEY_USERNAME,user);
-                        params.put(KEY_PASSWORD,pass);
-
-                        try {
-                            JSONObject data = new JSONObject();
-                            data.put("loginName", user);
-                            data.put("loginPass", pass);
-                            Log.e("request",data.toString());
-                            params.put("data login-------", data.toString());
-                        }catch (Exception e){
-                            e.printStackTrace();
-                        }
-                        //params.put("data", "{'username':'"+username+"','password':'"+password+"'}");
-                        return params;
-                    }
-
-                };
-
-                RequestQueue requestQueue = Volley.newRequestQueue(RegisterActivity.this);
-                requestQueue.add(stringRequest);
-                Log.d("====22====","----"+flag);
-
-            } catch (Exception e) {
-                e.printStackTrace();
-
-            }
+             testRequest();
             return "";
         }
 
